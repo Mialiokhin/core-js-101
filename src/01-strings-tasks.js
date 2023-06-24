@@ -63,8 +63,9 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, John Doe!' => 'John Doe'
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  const arrValue = value.split(' ');
+  return `${arrValue[1]} ${arrValue[2].slice(0, arrValue[2].length - 1)}`;
 }
 
 /**
