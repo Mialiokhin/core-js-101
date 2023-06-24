@@ -53,8 +53,10 @@ function getAverage(value1, value2) {
   if (value1 + value2 > Number.MAX_VALUE) {
     if (value1 > value2) {
       return (value1 - value2) / 2 + value2;
-    } return (value2 - value1) / 2 + value1;
-  } return (value2 + value1) / 2;
+    }
+    return (value2 - value1) / 2 + value1;
+  }
+  return (value2 + value1) / 2;
 }
 
 /**
@@ -72,8 +74,11 @@ function getAverage(value1, value2) {
  *   (0,0) (1,0)    => 1
  *   (-5,0) (10,-10) => 18.027756377319946
  */
-function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getDistanceBetweenPoints(x1, y1, x2, y2) {
+  const deltaX = x2 - x1;
+  const deltaY = y2 - y1;
+  const distance = Math.sqrt(deltaX ** 2 + deltaY ** 2);
+  return distance;
 }
 
 /**
