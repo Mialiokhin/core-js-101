@@ -204,8 +204,19 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(width, height) {
+  const horizontalBorder = '─'.repeat(width - 2);
+  const verticalBorder = `│${' '.repeat(width - 2)}│\n`;
+  const topLeftCorner = '┌';
+  const topRightCorner = '┐\n';
+  const bottomLeftCorner = '└';
+  const bottomRightCorner = '┘\n';
+
+  const topBorder = topLeftCorner + horizontalBorder + topRightCorner;
+  const middleRows = verticalBorder.repeat(height - 2);
+  const bottomBorder = bottomLeftCorner + horizontalBorder + bottomRightCorner;
+
+  return topBorder + middleRows + bottomBorder;
 }
 
 /**
