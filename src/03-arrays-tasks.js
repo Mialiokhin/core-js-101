@@ -234,7 +234,9 @@ function toArrayOfSquares(arr) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
  */
 function getMovingSum(arr) {
-  return arr.map((item, index) => arr.slice(0, index + 1).reduce((a, b) => a + b, 0));
+  return arr.map((item, index) =>
+    arr.slice(0, index + 1).reduce((a, b) => a + b, 0)
+  );
 }
 
 /**
@@ -452,7 +454,9 @@ function getIdentityMatrix(n) {
   const array = Array(n)
     .fill(0)
     .map(() => Array(n).fill(0));
-  return array.map((item, index1) => item.map((el, index2) => (index1 === index2 ? 1 : 0)));
+  return array.map((item, index1) =>
+    item.map((el, index2) => (index1 === index2 ? 1 : 0))
+  );
 }
 
 /**
@@ -486,8 +490,8 @@ function getIntervalArray(start, end) {
  *   [ 'a', 'a', 'a', 'a' ]  => [ 'a' ]
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  return arr.filter((value, index, array) => array.indexOf(value) === index);
 }
 
 /**
