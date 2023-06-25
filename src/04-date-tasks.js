@@ -51,8 +51,12 @@ function parseDataFromIso8601(value) {
  *    Date(2012,1,1)    => true
  *    Date(2015,1,1)    => false
  */
-function isLeapYear(/* date */) {
-  throw new Error('Not implemented');
+function isLeapYear(date) {
+  const year = date.getFullYear();
+  const newDate = new Date(`${year}-02-29`);
+  const month = newDate.getMonth();
+  if (month === 2) return false;
+  return true;
 }
 
 /**
