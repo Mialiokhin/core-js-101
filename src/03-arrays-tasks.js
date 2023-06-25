@@ -234,9 +234,7 @@ function toArrayOfSquares(arr) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
  */
 function getMovingSum(arr) {
-  return arr.map((item, index) =>
-    arr.slice(0, index + 1).reduce((a, b) => a + b, 0)
-  );
+  return arr.map((item, index) => arr.slice(0, index + 1).reduce((a, b) => a + b, 0));
 }
 
 /**
@@ -454,9 +452,7 @@ function getIdentityMatrix(n) {
   const array = Array(n)
     .fill(0)
     .map(() => Array(n).fill(0));
-  return array.map((item, index1) =>
-    item.map((el, index2) => (index1 === index2 ? 1 : 0))
-  );
+  return array.map((item, index1) => item.map((el, index2) => (index1 === index2 ? 1 : 0)));
 }
 
 /**
@@ -524,8 +520,19 @@ function distinct(arr) {
  *    "Poland" => ["Lodz"]
  *   }
  */
-function group(/* array, keySelector, valueSelector */) {
-  throw new Error('Not implemented');
+function group(array, keySelector, valueSelector) {
+  return array.reduce((map, item) => {
+    const key = keySelector(item);
+    const value = valueSelector(item);
+
+    if (map.has(key)) {
+      map.get(key).push(value);
+    } else {
+      map.set(key, [value]);
+    }
+
+    return map;
+  }, new Map());
 }
 
 /**
