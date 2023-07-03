@@ -19,8 +19,14 @@
  *    console.log(r.height);      // => 20
  *    console.log(r.getArea());   // => 200
  */
-function Rectangle(/* width, height */) {
-  throw new Error('Not implemented');
+function Rectangle(width, height) {
+  return {
+    width,
+    height,
+    getArea() {
+      return width * height;
+    },
+  };
 }
 
 /**
@@ -33,8 +39,8 @@ function Rectangle(/* width, height */) {
  *    [1,2,3]   =>  '[1,2,3]'
  *    { width: 10, height : 20 } => '{"height":10,"width":20}'
  */
-function getJSON(/* obj */) {
-  throw new Error('Not implemented');
+function getJSON(obj) {
+  return JSON.stringify(obj);
 }
 
 /**
@@ -48,24 +54,27 @@ function getJSON(/* obj */) {
  *    const r = fromJSON(Circle.prototype, '{"radius":10}');
  *
  */
-function fromJSON(/* proto, json */) {
-  throw new Error('Not implemented');
+function fromJSON(proto, json) {
+  const obj = JSON.parse(json);
+  const values = Object.values(obj);
+  return new proto.constructor(...values);
 }
 
 /**
- * Css selectors builder
+ * Css selectors.scss builder
  *
  * Each complex selector can consists of type, id, class, attribute, pseudo-class
- * and pseudo-element selectors:
+ * and pseudo-element selectors.scss:
  *
  *    element#id.class[attr]:pseudoClass::pseudoElement
  *              \----/\----/\----------/
  *              Can be several occurrences
  *
- * All types of selectors can be combined using the combination ' ','+','~','>' .
+ * All types of selectors.scss can be combined using the combination ' ','+','~','>' .
  *
  * The task is to design a single class, independent classes or classes hierarchy
- * and implement the functionality to build the css selectors using the provided cssSelectorBuilder.
+ * and implement the functionality to build
+ * the css selectors.scss using the provided cssSelectorBuilder.
  * Each selector should have the stringify() method to output the string representation
  * according to css specification.
  *
